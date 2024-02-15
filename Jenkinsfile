@@ -13,7 +13,9 @@ pipeline {
         }
         stage('Build') { // Define a stage for building the project
            steps {
-               bat 'mvn clean install' // Execute Maven command to clean and install dependencies
+               dir("/jenkins") {
+                   bat 'mvn clean install' // Execute Maven command to clean and install dependencies
+               }
            }
         }
         stage('Test') { // Define a stage for running tests
