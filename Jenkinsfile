@@ -20,7 +20,7 @@ pipeline {
             echo "Before changing directory: ${pwd()}"
             
             // Change drive to the one where your project is located
-            bat 'cd /d D:\\path\\to\\Metropolia_Samu\\Ohtu\\FarTOCel'
+            bat 'cd /d D:\\Metropolia_Samu\\Ohtu\\FarTOCel'
             
             echo "After changing directory: ${pwd()}"
             
