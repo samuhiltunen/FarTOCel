@@ -36,7 +36,7 @@ pipeline {
             steps {
                 script {
                     // Change to the project directory
-                    dir("Metropolia_Samu/Ohtu/FarTOCel") {
+                    dir("D:\\Metropolia_Samu\\Ohtu\\FarTOCel\\jenkins") {
                         // Execute Maven command
                         bat 'mvn test'
                     }
