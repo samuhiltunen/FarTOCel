@@ -1,41 +1,52 @@
 pipeline {
-    agent any // Define an agent to execute the pipeline on any available executor
+    agent any
 
     environment {
-        PATH = "${env.PATH};C:\\Windows\\System32" // Update the PATH to include the directory of cmd.exe
+        PATH = "${env.PATH};C:\\Windows\\System32"
     }
-    
+
     stages {
-        stage('Checkout') { // Define a stage for checking out the source code
+        stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/samuhiltunen/FarTOCel' // Checkout the repository from GitHub
+                script {
+                    checkout([$class: 'GitSCM', branches: [[name: 'main']], userRemoteConfigs: [[url: 'https://github.com/samuhiltunen/FarTOCel']]])
+                }
             }
         }
-        stage('Build') { // Define a stage for building the project
-           steps {
-               dir("Metropolia_Samu/Ohtu/FarTOCel") {
-                   bat 'mvn clean install' // Execute Maven command to clean and install dependencies
-               }
-           }
+
+        stage('Build') {
+            steps {
+                script {
+                    echo "Before changing directory: ${pwd()}"
+                    dir("Metropolia_Samu/Ohtu/FarTOCel") {
+                        echo "After changing directory: ${pwd()}"
+                        // Execute Maven command
+                        bat 'mvn clean install'
+                    }
+                }
+            }
         }
-        stage('Test') { // Define a stage for running tests
-           steps {
-               bat 'mvn test' // Execute Maven command to run tests
-           }    
+
+        stage('Test') {
+            steps {
+                script {
+                    // Change to the project directory
+                    dir("Metropolia_Samu/Ohtu/FarTOCel") {
+                        // Execute Maven command
+                        bat 'mvn test'
+                    }
+                }
+            }
         }
     }
 
-    post { // Define post-build actions
-        success { // Define actions to be executed if the build is successful
-            // Publish JUnit test results
+    post {
+        success {
             junit '**/target/surefire-reports/TEST-*.xml'
-            // Generate JaCoCo code coverage report
             jacoco(execPattern: '**/target/jacoco.exec')
-            // Send email notification on success
             emailext body: 'Latest build and integrations', subject: 'Test Status', to: 'samu.hiltunen@metropolia.fi'
         }
-        always { // Define actions to be executed regardless of the build result
-            // Always send email notification
+        always {
             emailext body: 'Latest build and integrations', subject: 'Test Status', to: 'samu.hiltunen@metropolia.fi'
         }
     }
