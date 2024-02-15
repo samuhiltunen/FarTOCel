@@ -13,7 +13,7 @@ pipeline {
         }
         stage('Build') { // Define a stage for building the project
            steps {
-               dir("Metropolia_Samu/Ohtu/FarTOCel/jenkins") {
+               dir("Metropolia_Samu/Ohtu/FarTOCel") {
                    bat 'mvn clean install' // Execute Maven command to clean and install dependencies
                }
            }
