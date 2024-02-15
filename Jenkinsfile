@@ -8,24 +8,19 @@ pipeline {
     stages {
         stage('Checkout') { // Define a stage for checking out the source code
             steps {
-                script {
-                    // Checkout the repository from GitHub
-                    checkout([$class: 'GitSCM', branches: [[name: 'main']], userRemoteConfigs: [[url: 'https://github.com/samuhiltunen/FarTOCel']]])
-                }
+                git branch: 'main', url: 'https://github.com/samuhiltunen/FarTOCel' // Checkout the repository from GitHub
             }
         }
         stage('Build') { // Define a stage for building the project
            steps {
-               dir("FarTOCel/jenkins") {
+               dir("D:\Metropolia_Samu\Ohtu\FarTOCel") {
                    bat 'mvn clean install' // Execute Maven command to clean and install dependencies
                }
            }
         }
         stage('Test') { // Define a stage for running tests
            steps {
-               dir("FarTOCel/jenkins") {
-                   bat 'mvn test' // Execute Maven command to run tests
-               }
+               bat 'mvn test' // Execute Maven command to run tests
            }    
         }
     }
