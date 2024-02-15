@@ -1,6 +1,5 @@
 pipeline {
     agent any
-
     environment {
         PATH = "${env.PATH};C:\\Windows\\System32"
     }
