@@ -15,17 +15,21 @@ pipeline {
         }
 
         stage('Build') {
-            steps {
-                script {
-                    echo "Before changing directory: ${pwd()}"
-                    dir("Metropolia_Samu/Ohtu/FarTOCel") {
-                        echo "After changing directory: ${pwd()}"
-                        // Execute Maven command
-                        bat 'mvn clean install'
-                    }
-                }
-            }
+    steps {
+        script {
+            echo "Before changing directory: ${pwd()}"
+            
+            // Change drive to the one where your project is located
+            bat 'cd /d D:\\path\\to\\Metropolia_Samu\\Ohtu\\FarTOCel'
+            
+            echo "After changing directory: ${pwd()}"
+            
+            // Execute Maven command
+            bat 'mvn clean install'
         }
+    }
+}
+
 
         stage('Test') {
             steps {
