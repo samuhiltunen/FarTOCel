@@ -19,8 +19,8 @@ pipeline {
         script {
             echo "Before changing directory: ${pwd()}"
             
-            // Change drive to the one where your project is located
-            bat 'cd /d D:\\Metropolia_Samu\\Ohtu\\FarTOCel'
+            // Use pushd to switch to the specified drive and directory
+            bat 'pushd D:\\Metropolia_Samu\\Ohtu\\FarTOCel'
             
             echo "After changing directory: ${pwd()}"
             
@@ -29,6 +29,7 @@ pipeline {
         }
     }
 }
+
 
 
         stage('Test') {
