@@ -19,13 +19,13 @@ pipeline {
         script {
             echo "Before changing directory: ${pwd()}"
             
-            // Use pushd to switch to the specified drive and directory
-            bat 'pushd D:\\Metropolia_Samu\\Ohtu\\FarTOCel'
-            
-            echo "After changing directory: ${pwd()}"
-            
-            // Execute Maven command
-            bat 'mvn clean install'
+            // Change to the specified directory using dir step
+            dir('D:\\Metropolia_Samu\\Ohtu\\FarTOCel') {
+                echo "After changing directory: ${pwd()}"
+                
+                // Execute Maven command
+                bat 'mvn clean install'
+            }
         }
     }
 }
