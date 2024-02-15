@@ -20,7 +20,7 @@ pipeline {
             echo "Before changing directory: ${pwd()}"
             
             // Change to the specified directory using dir step
-            dir('D:\\Metropolia_Samu\\Ohtu\\FarTOCel') {
+            dir('D:\\Metropolia_Samu\\Ohtu\\FarTOCel\\jenkins') {
                 echo "After changing directory: ${pwd()}"
                 
                 // Execute Maven command
