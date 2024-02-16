@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
-Test set: jenkins.KelvintoCelTest
+Test set: jenkins.FarToCelTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in jenkins.KelvintoCelTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.062 s -- in jenkins.FarToCelTest

@@ -1,5 +1,0 @@
-# Created at 2024-02-15T15:21:07.615
-Boot Manifest-JAR contains absolute paths in classpath 'd:\Metropolia_Samu\Ohtu\jenkins_vk5\jenkins\target\test-classes'
-Hint: <argLine>-Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
-'other' has different root
-
