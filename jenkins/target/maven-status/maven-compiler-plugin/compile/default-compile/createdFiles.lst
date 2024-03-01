@@ -1,2 +1,3 @@
-jenkins\FarToCel.class
-jenkins\KelvintoCel.class
+jenkins/KelvinToFar.class
+jenkins/FarToCel.class
+jenkins/KelvintoCel.class
